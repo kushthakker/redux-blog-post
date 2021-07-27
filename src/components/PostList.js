@@ -1,22 +1,12 @@
 import React, { useEffect } from "react";
-<<<<<<< HEAD
-import { fetchPost, FetchPostAndUser } from "../actions";
+import { FetchPostAndUser } from "../actions";
 import { connect } from "react-redux";
 import UserHeader from "./UserHeader";
 
-const PostList = ({ fetchPost, posts, users, FetchPostAndUser }) => {
+const PostList = ({ posts, FetchPostAndUser }) => {
   useEffect(() => {
     FetchPostAndUser();
-=======
-import { fetchPost } from "../actions";
-import { connect } from "react-redux";
-import UserHeader from "./UserHeader";
-
-const PostList = ({ fetchPost, posts, users }) => {
-  useEffect(() => {
-    fetchPost();
->>>>>>> master
-  }, [fetchPost]);
+  }, [FetchPostAndUser]);
 
   const renderList = () => {
     return posts.map((post) => {
@@ -37,24 +27,11 @@ const PostList = ({ fetchPost, posts, users }) => {
     });
   };
 
-  return (
-    <div className="ui relaxed divided list">
-      {renderList()}
-      {console.log(`posts--`, posts)}
-      {console.log(`users--`, users)}
-    </div>
-  );
+  return <div className="ui relaxed divided list">{renderList()}</div>;
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return { posts: state.post, users: state.users };
 };
 
-<<<<<<< HEAD
-export default connect(mapStateToProps, { fetchPost, FetchPostAndUser })(
-  PostList
-);
-=======
-export default connect(mapStateToProps, { fetchPost })(PostList);
->>>>>>> master
+export default connect(mapStateToProps, { FetchPostAndUser })(PostList);
