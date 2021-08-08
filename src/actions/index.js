@@ -3,15 +3,15 @@ import _ from "lodash";
 
 const FetchPostAndUser = () => async (dispatch, getState) => {
   await dispatch(fetchPost());
-  // console.log(getState().post);
-  // const userIds = new Set(getState().post.map(({ userId }) => userId));
-  // console.log(userIds);
-  // userIds.forEach((id) => dispatch(UserHeaderPost(id)));
+  console.log(getState().post);
+  const userIds = new Set(getState().post.map(({ userId }) => userId));
+  console.log(userIds);
+  userIds.forEach((id) => dispatch(UserHeaderPost(id)));
 
-  _.chain(getState().post)
-    .setMap((post) => post.userId)
-    .forEach((id) => dispatch(UserHeaderPost(id)))
-    .value();
+  // _.chain(getState().post)
+  //   .setMap((post) => post.userId)
+  //   .forEach((id) => dispatch(UserHeaderPost(id)))
+  //   .value();
 };
 
 const fetchPost = () => async (dispatch) => {
